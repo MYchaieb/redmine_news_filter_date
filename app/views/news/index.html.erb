@@ -23,8 +23,9 @@
 <% if @newss.empty? %>
 <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
+<% datesetting = Setting.plugin_redmine_news_filter_date['FilterDate'] == "" ? nil : Setting.plugin_redmine_news_filter_date['FilterDate']  %>
 <% @newss.each do |news| %>
-  <% if news.created_on > DateTime.parse(Setting.plugin_redmine_news_filter_date['FilterDate'] ) %>
+  <% if (datesetting != nil && news.created_on > DateTime.parse(datesetting ) )|| datesetting == nil %>
     <article class="news-article">
       <header>
         <h3><%= avatar(news.author, :size => "24") %><%= link_to_project(news.project) + ': ' unless news.project == @project %>

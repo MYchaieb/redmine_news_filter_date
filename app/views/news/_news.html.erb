@@ -1,4 +1,5 @@
-<% if news.created_on > DateTime.parse(Setting.plugin_redmine_news_filter_date['FilterDate'] ) %>
+<% datesetting = Setting.plugin_redmine_news_filter_date['FilterDate'] == "" ? nil : Setting.plugin_redmine_news_filter_date['FilterDate']  %>
+<% if (datesetting != nil && news.created_on > DateTime.parse(datesetting ) )|| datesetting == nil %>
 
 <p><%= link_to_project(news.project) + ': ' unless @project %>
 <%= link_to news.title, news_path(news) %>

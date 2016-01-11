@@ -7,6 +7,6 @@ Redmine::Plugin.register :redmine_news_filter_date do
   author_url 'http://example.com/about'
 
 
-  settings :default => {},
+  settings :default => {'FilterDate' => '2014-01-01'},
            :partial => 'settings/news_fiter'
 end
