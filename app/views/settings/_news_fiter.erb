@@ -1,0 +1,13 @@
+<fieldset>
+ 
+
+
+
+ <p>
+  <%= content_tag(:label, l(:filter_before)) %>
+  <%= text_field_tag 'settings[FilterDate]', @settings['FilterDate'], :size => 10 %><%= calendar_for('settings_FilterDate') %>
+</p>
+
+
+
+</fieldset>
